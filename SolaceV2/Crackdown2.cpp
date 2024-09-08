@@ -2,9 +2,13 @@
 #include "Crackdown2.h"
 
 namespace SolaceV2 {
+	bool Crackdown2::showFps = false;
 
 	uint32_t Crackdown2::apocalypse = 0x82719790;
 	uint32_t Crackdown2::consoleCmds = 0x82771EB0;
+	uint32_t Crackdown2::showfps = 0x83801B0C;
+
+	uint32_t Crackdown2::fps_on = 1;
 
 	void(*Crackdown2::Apocalypse)()= reinterpret_cast<void(*)()> (Crackdown2::apocalypse);
 	void(*Crackdown2::ConsoleCmd)(std::string command) = reinterpret_cast<void(*)(std::string command)> (0x82771EB0);
@@ -19,15 +23,26 @@ namespace SolaceV2 {
 		Page2 += newLine;
 		Page2 += L"Apacolypse = DPAD_LEFT+X";
 		Page2 += newLine;
+		Page2 += L"Show FPS = DPAD_LEFT+Y";
 		Page2 += newLine + newLine;
 		Page2 += L"[*] This is just a sample.";
 		return Page2.c_str();
 	}
-
-	//static void (*Crackdown2::Apocalypse)(); //= reinterpret_cast<void(*)()> (Crackdown2::apocalypse);
 	
 	void Crackdown2::FlyMode() {
 		ConsoleCmd("fly");
+	}
+
+	bool Crackdown2::ShowFPS() {
+		if (!Crackdown2::showFps) {
+			Utilities::Memory::WriteUInt32(Crackdown2::showfps, 1);
+			Crackdown2::showFps = true;
+		}
+		else {
+			Utilities::Memory::WriteUInt32(Crackdown2::showfps, 0);
+			Crackdown2::showFps = false;
+		}
+		return Crackdown2::showFps;
 	}
 
 	void Crackdown2::MessageBox() {
@@ -44,8 +59,6 @@ namespace SolaceV2 {
 	void Crackdown2::LoadPlugin() {
 		XINPUT_STATE state = { 0 };
 		ZeroMemory(&state, sizeof(state));
-		//CrackdownTU6StaticCheats();
-		MessageBox();
 
 		while (Utilities::Xam::GetCurrentTitleId() == Utilities::Games::GAME_CRACKDOWN2) {
 
@@ -62,7 +75,6 @@ namespace SolaceV2 {
 
 				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT && state.Gamepad.wButtons & XINPUT_GAMEPAD_X) {
 
-					//Outlines();
 					Apocalypse();
 					hasToggled = true;
 				}
@@ -72,8 +84,13 @@ namespace SolaceV2 {
 					FlyMode();
 					hasToggled = true;
 				}
+
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT && state.Gamepad.wButtons & XINPUT_GAMEPAD_Y) {
+					ShowFPS();
+					hasToggled = true;
+				}
 			}
-			if (hasToggled) Sleep(500);
+			if (hasToggled) Sleep(300);
 		}
 	}
 }

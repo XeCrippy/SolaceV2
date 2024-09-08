@@ -10,12 +10,12 @@ namespace SolaceV2 {
 		//bool outlines = false;
 		//bool perfGraphs = false;
 		//bool dbgText = false;
-		//bool showFps = false;
+		static bool showFps; //= false;
 
 		//uint8_t _off = 0;
 		//uint8_t _on = 1;
 		//uint32_t fps_off = 0;
-		//uint32_t fps_on = 1;
+		static uint32_t fps_on;
 		//uint32_t outlines_off = 0;
 		//uint32_t outlines_on = 2;
 
@@ -29,7 +29,7 @@ namespace SolaceV2 {
 		//uint32_t outlinemode = 0x83801164; // dword
 		//uint32_t perfgraphs = 0x83801A01;
 		//uint32_t redDebugText = 0x83800AEF;
-		//uint32_t showfps = 0x83801B0C; // dword
+		static uint32_t showfps; //= 0x83801B0C; // dword
 		//uint32_t togglebloom = 0x830A054E;
 
 		//bool DrawOutlines();
@@ -37,6 +37,7 @@ namespace SolaceV2 {
 		//bool ShowFps();
 		//bool ShowGraphs();
 
+		static bool ShowFPS();
 		static void (*Crackdown2::Apocalypse)(); //= reinterpret_cast<void(*)()> (Crackdown2::apocalypse);
 		static void FlyMode();
 		//void GodMode();

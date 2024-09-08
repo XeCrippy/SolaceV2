@@ -53,7 +53,7 @@ void Dashboard::ShowMainPage() {
     const wchar_t* buttonLabels[] = { L"Next", L"Reboot Console", L"Close" };
     uint32_t buttonPressedIndex = 0;
     uint32_t result = Utilities::Xam::ShowMessageBox(
-        L"xSolace 360 Multi-Game Plugin",
+        L"Solace V2 Multi-Game Plugin",
         MainPage(),
         buttonLabels,
         ARRAYSIZE(buttonLabels),
@@ -78,7 +78,7 @@ void Dashboard::ShowMainPage() {
 
 void Dashboard::Init()
 {
-    Utilities::Xam::XNotify("xSolace 360 : Dashboard Loaded. Press LB+RB to view info");
+    Utilities::Xam::XNotify("Solace V2 : Dashboard Loaded. Press LB+RB to view info");
 
     while (Utilities::Xam::GetCurrentTitleId() == Utilities::GAME_DASHBOARD) {
 

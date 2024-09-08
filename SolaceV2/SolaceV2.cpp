@@ -43,8 +43,8 @@ void PluginMain::InitNewTitle(uint32_t newTitleId)
 		break;
 
 	case Utilities::GAME_CRACKDOWN2:
-		Utilities::Xam::XNotify("Crackdown cheats loaded!");
 		Sleep(15000);
+		Utilities::Xam::XNotify("Crackdown cheats loaded! Press LB+RB for info");
 		SolaceV2::Crackdown2::LoadPlugin();
 
 	default:
