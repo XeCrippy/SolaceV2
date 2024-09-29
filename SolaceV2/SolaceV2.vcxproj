@@ -245,7 +245,7 @@
       <AdditionalOptions>/DLL /ENTRY:"_DllMainCRTStartup" /ALIGN:128,4096 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Deploy>
-      <DeploymentType>CopyToHardDrive</DeploymentType>
+      <DeploymentType>EmulateDvd</DeploymentType>
     </Deploy>
     <ImageXex>
       <ConfigurationFile>solacev2.xml</ConfigurationFile>
