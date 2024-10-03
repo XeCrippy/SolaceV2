@@ -1,5 +1,6 @@
 // SolaceV2.cpp : Defines the entry point for the application.
 //
+// Credit to Clement Dreptin
 
 #include "stdafx.h"
 #include "SolaceV2.h"

@@ -2,21 +2,13 @@
 #include "Crackdown2.h"
 
 namespace SolaceV2 {
-	//bool Crackdown2::showFps = false;
-
-	//uint32_t Crackdown2::apocalypse = 0x82719790;
-	//uint32_t Crackdown2::consoleCmds = 0x82771EB0;
-	//uint32_t Crackdown2::showfps = 0x83801B0C;
-
-	//uint32_t Crackdown2::fps_on = 1;
-
 	void(*Crackdown2::Apocalypse)()= reinterpret_cast<void(*)()> (Crackdown2::apocalypse);
 	void(*Crackdown2::ConsoleCmd)(std::string command) = reinterpret_cast<void(*)(std::string command)> (0x82771EB0);
 
-	const wchar_t* buttonLabels[] = { L"Continue" };
-	const wchar_t* Title = L"Crackdown 2 TU5 Trainer";
+	const wchar_t* Crackdown2::buttonLabels[] = { L"Continue" };
+	const wchar_t* Crackdown2::Title = L"Crackdown 2 TU5 Trainer";
 
-	const wchar_t* MainPage() {
+	const wchar_t* Crackdown2::MainPage() {
 		std::wstring newLine = L"\r\n";
 		std::wstring Page2;
 		Page2 += L"Fly Mode = Dpad_Left+A";
@@ -146,7 +138,6 @@ namespace SolaceV2 {
 				}
 
 				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT && state.Gamepad.wButtons & XINPUT_GAMEPAD_A) {
-
 					FlyMode();
 					hasToggled = true;
 				}
