@@ -1,4 +1,5 @@
 *Credit to Clement Dreptin for some of the xam and memory functions
+https://github.com/ClementDreptin/XexUtils
 
 *This works with xenia_canary if you use the version with the plugin loader by Adrian
 
